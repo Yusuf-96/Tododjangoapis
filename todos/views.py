@@ -63,10 +63,10 @@ class DetailTodo(APIView):
          data = request.data
          serializer = TodoSerializer(instance=todos, data=data)
 
-         if serializer.is_valid():
-            serializer.save()
-         return Response(serializer.data)
-      return Response('Todo updated')
+         serializer.is_valid(raise_exception = True)
+         serializer.save()
+         return Response(serializer.data, {'message':'success'})
+      return Response('Todo cannot updated')
 
    def delete(self, request, *args, pk, **kwargs):
       
