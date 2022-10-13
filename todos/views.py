@@ -56,7 +56,7 @@ class DetailTodo(APIView):
          serializer = TodoSerializer(todo)
          return Response(serializer.data)
 
-   def put(self, request, *args, pk, **kwars):
+   def put(self, request, *args, pk, **kwargs):
     
       if request.method =='PUT':
          todos = Todo.objects.get(id=pk)
@@ -66,7 +66,7 @@ class DetailTodo(APIView):
          serializer.is_valid(raise_exception = True)
          serializer.save()
          return Response(serializer.data, {'message':'success'})
-      return Response('Todo cannot updated')
+      return Response({'message': 'Todo cannot updated'})
 
    def delete(self, request, *args, pk, **kwargs):
       
