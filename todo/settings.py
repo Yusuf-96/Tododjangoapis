@@ -194,6 +194,8 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
+django_heroku.settings(locals())
+
 
 options = DATABASES['default'].get('OPTIONS', {})
 options.pop('sslmode', None)
